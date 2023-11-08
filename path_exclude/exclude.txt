@@ -1,0 +1,3 @@
+^db/database.sql$
+^db/crmmvc.sql$
+^src/main/webapp/

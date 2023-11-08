@@ -1,0 +1,11 @@
+.logo-width {
+    width: 20em;
+}
+
+.msg-show {
+    display: block;
+}
+
+.msg-none {
+    display: none;
+}

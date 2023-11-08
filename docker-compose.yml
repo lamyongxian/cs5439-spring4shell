@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  db:
+    container_name: db
+    #image: mysql:8.0
+    #network_mode: "host"
+    build: db/.
+    ports:
+      - "3306:3306"
+    env_file:
+      - db/db.env
+    expose:
+      - '3306'
+    #restart: always
+    #volumes:
+    #  - db:/var/lib/mysql
+    #  - ./db/database.sql:/docker-entrypoint-initdb.d/database.sql
+    networks:
+      - default
+
+
+  app:
+    container_name: app
+    #network_mode: "host"
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    networks:
+      - default
+
+  app2:
+      container_name: app_spring4shell
+      build:
+        context: .
+        dockerfile: Dockerfile-spring4shell
+      depends_on:
+        - db
+      ports:
+        - "8081:8081"
+      networks:
+        - default
+
+volumes:
+  db:
+    driver: local
+
+networks:
+  default:
+    name: default_network
