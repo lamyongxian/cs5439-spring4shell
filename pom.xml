@@ -143,7 +143,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>spring4shell</finalName>
+		<finalName>ROOT</finalName>
 	</build>
 	<properties>
 		<junit.version>5.5.0</junit.version>

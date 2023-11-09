@@ -12,7 +12,7 @@
  	<mvc:annotation-driven />
  	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 	<ctx:annotation-config></ctx:annotation-config>
-	<ctx:component-scan base-package="sg.lam"></ctx:component-scan>
+	<ctx:component-scan base-package="sg.edu.nus.comp"></ctx:component-scan>
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	

@@ -20,7 +20,7 @@
 		<div class="col-sm-4 col-sm-offset-4 text-center">
 			<img class="logo-width" src="<c:url value="/resources/crm.png" />" />
 			<h2>Hello NUS!</h2>
-			<a class="btn btn-success" href="login">Login To CMS</a>
+			<a class="btn btn-success" href="login">Login To System</a>
 		</div>
 	</div>
 </body>

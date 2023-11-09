@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="col-sm-4 col-sm-offset-4 text-center">
 			<img class="logo-width" src="<c:url value="/resources/crm.png" />" />
-			<h2>Hello CRM!</h2>
+			<h2>Hello! This is a secure Java system.</h2>
 			<div class="alert alert-danger alert-dismissable ${strDisplayMsg}">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				${strMsg}
