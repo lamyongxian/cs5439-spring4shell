@@ -6,9 +6,9 @@ sudo apt-get update > /dev/null 2>&1
 echo "[+]" $( date +%T ) "Installing Java"
 sudo apt-get -y install default-jdk > /dev/null 2>&1
 
-echo "[+]" $( date +%T ) "Installing Node & npm"
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - > /dev/null 2>&1
-sudo apt-get -y install nodejs npm > /dev/null 2>&1
+#echo "[+]" $( date +%T ) "Installing Node & npm"
+#$#curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - > /dev/null 2>&1
+#sudo apt-get -y install nodejs npm > /dev/null 2>&1
 
 echo "[+]" $( date +%T ) "Installing pip"
 sudo apt-get install -y python3-pip > /dev/null 2>&1
@@ -61,7 +61,7 @@ sudo apt -y install maven >/dev/null 2>&1
 # Clone Repo
 echo "[+]" $( date +%T ) "Clone Repo"
 mkdir -p -m a=rwx /home/vagrant/spring4shell >/dev/null 2>&1
-git clone https://github.com/lamyongxian/crmmvc.git /home/vagrant/spring4shell >/dev/null 2>&1
+git clone https://github.com/lamyongxian/cs5439-spring4shell.git /home/vagrant/spring4shell >/dev/null 2>&1
 pwd
 
 # Run Maven
