@@ -1,0 +1,15 @@
+FROM maven as maven
+COPY ./spring4shell /vagrant/spring4shell
+#WORKDIR  /spring4shell/
+RUN mvn -f /vagrant/spring4shell/pom.xml clean package -DskipTests -P after-patch
+
+
+FROM lunasec/tomcat-9.0.59-jdk11
+RUN sed -i 's/port="8080"/port="8082"/' ${CATALINA_HOME}/conf/server.xml
+
+COPY --from=maven /vagrant/spring4shell/target/ROOT.war /usr/local/tomcat/webapps/ROOT.war
+#COPY /target/ROOT.war /usr/local/tomcat/webapps/
+#COPY /target/spring4shell.war /var/lib/tomcat9/webapps/
+#COPY /tomcat/ /usr/local/tomcat/webapps/ROOT/
+
+ENTRYPOINT ["catalina.sh", "run"]
