@@ -1,10 +1,10 @@
 FROM maven as maven
 COPY ./ /vagrant/spring4shell
-RUN mvn -f /vagrant/spring4shell/pom.xml clean package -DskipTests -P after-patch
+RUN mvn -f /vagrant/spring4shell/pom.xml clean package -DskipTests -P enable-spring-security
 
 
 FROM lunasec/tomcat-9.0.59-jdk11
-RUN sed -i 's/port="8080"/port="8082"/' ${CATALINA_HOME}/conf/server.xml
+RUN sed -i 's/port="8080"/port="8083"/' ${CATALINA_HOME}/conf/server.xml
 
 COPY --from=maven /vagrant/spring4shell/target/ROOT.war /usr/local/tomcat/webapps/ROOT.war
 #COPY /target/ROOT.war /usr/local/tomcat/webapps/

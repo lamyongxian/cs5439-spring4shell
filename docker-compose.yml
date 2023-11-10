@@ -55,6 +55,18 @@ services:
     networks:
       - default
 
+  app4:
+    container_name: app_spring4shell_spring_security
+    build:
+      context: .
+      dockerfile: Dockerfile-spring4shell-enable-spring-security
+    depends_on:
+      - db
+    ports:
+      - "8083:8083"
+    networks:
+      - default
+
 volumes:
   db:
     driver: local

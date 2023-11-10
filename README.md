@@ -1,6 +1,6 @@
 # Content Management System MVC
 
-This is a simple Spring MVC 5.x application project built with Maven, incorporating dependencies such Bootstrap, J2EE and Spring Security Module. Originally built for an interview coding assignment even though the author did not eventually work for that company. Full source code is released under GNU GPL v3.
+This is a simple Spring MVC 5.x application project built with Maven, incorporating dependencies such Bootstrap, J2EE and Spring Security Module.
 
 ## :exclamation: Deliberately Vulnerable Application (Do not use in production environment)
 This repository has been forked and configure to demonstrate a Java EE based vulnerabilities.
@@ -39,7 +39,7 @@ Internally, the server VM uses Docker technology to spin up containers that bind
 2. Open up src/main/resources/application.properties in the source project.
 3. Ensure database credentials _jdbc.url, jdbc.username and jdbc.password_ are correct. Save for any change.
 4. Open the Maven tab located on the right-hand side of the IDE, and go to `Spring Maven Webapp` >  `Lifecycle` > `package`.
-5. spring4shell.war should appear under `target/` directory of the project root.
+5. ROOT.war should appear under `target/` directory of the project root.
 
 - Using Maven
 1. Ensure Maven is installed in the system and added into System Environmental PATH (Refer to https://maven.apache.org/install.html).
@@ -47,7 +47,7 @@ Internally, the server VM uses Docker technology to spin up containers that bind
   ```
   $ cd ~/spring4shell/
   ```
-3. Run Maven to clean and package the project into a web archive. spring4shell.war should appear under `target/` directory of the project root.
+3. Run Maven to clean and package the project into a web archive. ROOT.war should appear under `target/` directory of the project root.
   ```
   $ mvn clean package
   ```
@@ -58,7 +58,7 @@ Internally, the server VM uses Docker technology to spin up containers that bind
 3. In the `Run/Debug Configurations` dialog, click `+` and select `Tomcat Server` > `Local`.
 4. In Server tab, click `Configure` button beside `Application Server`.
 5. In Application Server dialog, click on `+`. Ensure Tomcat Home and Tomcat base directory is pointing to the unzipped Tomcat installation (e.g. /usr/share/tomcat9/).  Click OK.
-6. In the `Run/Debug Configurations`, go to Deployment tab and click `+`. Select artifact `spring4shell.WAR`. Specify the `Application Context` (e.g. /spring4shell), then click OK.
+6. In the `Run/Debug Configurations`, go to Deployment tab and click `+`. Select artifact `ROOT.WAR`. Specify the `Application Context` (e.g. /spring4shell), then click OK.
 7. Go to `Run` > `Run...` or press Shift+F10 to run project in Tomcat server.
   
 ## Run Source Code using Docker
@@ -72,5 +72,5 @@ Internally, the server VM uses Docker technology to spin up containers that bind
 
 ## Deploy WAR to Tomcat
   
-1. Copy target/spring4shell.war to _\<your tomcat directory\>_/webapps/ of your Tomcat server installation. Restart Tomcat server if necessary.
+1. Copy target/ROOT.war to _\<your tomcat directory\>_/webapps/ of your Tomcat server installation. Restart Tomcat server if necessary.
 2. Open up web browser and access the URL http://<hostname>:8080/spring4shell/.

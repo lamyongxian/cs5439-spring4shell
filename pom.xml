@@ -173,5 +173,19 @@
 				</dependency>
 			</dependencies>
 		</profile>
+		<profile>
+			<id>enable-spring-security</id>
+			<build>
+			<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webXml>src/main/webapp/WEB-INF/web-with-spring-security.xml</webXml>
+				</configuration>
+			</plugin>
+			</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
