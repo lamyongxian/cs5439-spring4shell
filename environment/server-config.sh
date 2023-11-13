@@ -48,6 +48,9 @@ sudo ufw enable >/dev/null 2>&1
 sudo ufw allow 22 >/dev/null 2>&1
 sudo ufw allow 3306 >/dev/null 2>&1
 sudo ufw allow 8080 >/dev/null 2>&1
+sudo ufw allow 8081 >/dev/null 2>&1
+sudo ufw allow 8082 >/dev/null 2>&1
+sudo ufw allow 8083 >/dev/null 2>&1
 sudo ufw allow 80 >/dev/null 2>&1
 
 # Install Maven

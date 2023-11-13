@@ -2,7 +2,7 @@
 #FROM tomcat:8.0.36-jre8
 FROM lunasec/tomcat-9.0.59-jdk11
 RUN sed -i 's/port="8080"/port="8081"/' ${CATALINA_HOME}/conf/server.xml
-
+8.
 COPY /target/ROOT.war /usr/local/tomcat/webapps/
 #COPY /target/spring4shell.war /var/lib/tomcat9/webapps/
 #COPY /tomcat/ /usr/local/tomcat/webapps/ROOT/

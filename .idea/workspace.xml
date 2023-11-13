@@ -10,9 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2a75462-0d37-4458-aa60-3c085dc980da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/sg/edu/nus/comp/LoginController2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/loginB.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/poc-archive/CachedIntrospectionResults.java.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/poc-archive/spring4shell-attack.drawio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/poc-archive/spring4shell-exploit.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/poc-archive/spring4shell-poc.drawio.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile-spring4shell" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile-spring4shell" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environment/server-config.sh" beforeDir="false" afterPath="$PROJECT_DIR$/environment/server-config.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,29 +45,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/src/spring4shell/src/main/webapp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "spring.configuration.checksum": "9004ca7c29a0f1d41a94714407956636",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/src/spring4shell/src/main/webapp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;9004ca7c29a0f1d41a94714407956636&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\src\spring4shell\src\main\webapp" />
       <recent name="E:\src\spring4shell" />
       <recent name="E:\src\spring4shell\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\src\cs5439-spring4shell\poc-archive" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sg.edu.nus.comp" />
@@ -182,7 +190,9 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <recent_temporary>

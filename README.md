@@ -1,4 +1,4 @@
-# Content Management System MVC
+# Spring MVC IaC for Spring4Shell POC
 
 This is a simple Spring MVC 5.x application project built with Maven, incorporating dependencies such Bootstrap, J2EE and Spring Security Module.
 
@@ -12,9 +12,14 @@ This repository has been forked and configure to demonstrate a Java EE based vul
 
 ## Provisioning POC using Vagrant Up for VirtualBox
 We use Vagrant for provisioning of VirtualBox virtual an attacker and victim server machine for the purpose of this POC.
-Internally, the server VM uses Docker technology to spin up containers that binds to the respective port on the server host.
 
-![](environment/vagrant.PNG)
+### Kali VM 
+Attack VM will automatically clone the POC script directory from https://github.com/maxxedev/spring4shell into `~/spring4shell` directory. A copy of the POC can be found in `poc-archive/` directory.
+
+### Server VM
+Internally, the victim server VM uses Docker technology to spin up containers that binds to the respective port on the server host.
+
+![](poc-archive/spring4shell-poc.drawio.png)
 1. In terminal, change directory to `environment/`.
 2. Ensure Vagrant and Virtualbox is installed (See https://www.vagrantup.com/downloads).
 3. Run `vagrant up`in terminal.
@@ -24,7 +29,7 @@ Internally, the server VM uses Docker technology to spin up containers that bind
   $ vagrant up
   ```
 
-## Setup Database
+## Setup Database (Optional)
 
 1. Connect to MySQL Server 8.x or MariaDB on MySQL Workbench using DBAdmin User database credentials located in db/db.env.
 2. Under Navigator panel, select Management tab, select _Data Import/Restore_.

@@ -1,0 +1,104 @@
+
+package org.springframework.beans;
+
++import java.security.ProtectionDomain;
+
+public final class CachedIntrospectionResults {
+
+	/*** Other class properties not shown ***/
+
+	private CachedIntrospectionResults(Class<?> beanClass) throws BeansException {
+		try {
+			if (logger.isTraceEnabled()) {
+				logger.trace("Getting BeanInfo for class [" + beanClass.getName() + "]");
+			}
+			this.beanInfo = getBeanInfo(beanClass);
+
+			if (logger.isTraceEnabled()) {
+				logger.trace("Caching PropertyDescriptors for class [" + beanClass.getName() + "]");
+			}
+			this.propertyDescriptors = new LinkedHashMap<>();
+
+			Set<String> readMethodNames = new HashSet<>();
+
+			// This call is slow so we do it once.
+			PropertyDescriptor[] pds = this.beanInfo.getPropertyDescriptors();
+			for (PropertyDescriptor pd : pds) {
+-				if (Class.class == beanClass &&
+-				("classLoader".equals(pd.getName()) ||  "protectionDomain".equals(pd.getName()))) {
+-					// Ignore Class.getClassLoader() and getProtectionDomain() methods - nobody needs to bind to those
++				if (Class.class == beanClass && (!"name".equals(pd.getName()) && !pd.getName().endsWith("Name"))) {
++					// Only allow all name variants of Class properties
++					continue;
++				}
++				if (pd.getPropertyType() != null && (ClassLoader.class.isAssignableFrom(pd.getPropertyType())
++						|| ProtectionDomain.class.isAssignableFrom(pd.getPropertyType()))) {
++					// Ignore ClassLoader and ProtectionDomain types - nobody needs to bind to those
+					continue;
+				}
+				if (logger.isTraceEnabled()) {
+					logger.trace("Found bean property '" + pd.getName() + "'" +
+							(pd.getPropertyType() != null ? " of type [" + pd.getPropertyType().getName() + "]" : "") +
+							(pd.getPropertyEditorClass() != null ?
+									"; editor [" + pd.getPropertyEditorClass().getName() + "]" : ""));
+				}
+				pd = buildGenericTypeAwarePropertyDescriptor(beanClass, pd);
+				this.propertyDescriptors.put(pd.getName(), pd);
+				Method readMethod = pd.getReadMethod();
+				if (readMethod != null) {
+					readMethodNames.add(readMethod.getName());
+				}
+			}
+
+			// Explicitly check implemented interfaces for setter/getter methods as well,
+			// in particular for Java 8 default methods...
+			Class<?> currClass = beanClass;
+			while (currClass != null && currClass != Object.class) {
+				introspectInterfaces(beanClass, currClass, readMethodNames);
+				currClass = currClass.getSuperclass();
+			}
+
+			// Check for record-style accessors without prefix: e.g. "lastName()"
+			// - accessor method directly referring to instance field of same name
+			// - same convention for component accessors of Java 15 record classes
+			introspectPlainAccessors(beanClass, readMethodNames);
+
+			this.typeDescriptorCache = new ConcurrentReferenceHashMap<>();
+		}
+		catch (IntrospectionException ex) {
+			throw new FatalBeanException("Failed to obtain BeanInfo for class [" + beanClass.getName() + "]", ex);
+		}
+	}
+
+	private void introspectInterfaces(Class<?> beanClass, Class<?> currClass, Set<String> readMethodNames)
+			throws IntrospectionException {
+
+		for (Class<?> ifc : currClass.getInterfaces()) {
+			if (!ClassUtils.isJavaLanguageInterface(ifc)) {
+				for (PropertyDescriptor pd : getBeanInfo(ifc).getPropertyDescriptors()) {
+					PropertyDescriptor existingPd = this.propertyDescriptors.get(pd.getName());
+					if (existingPd == null ||
+							(existingPd.getReadMethod() == null && pd.getReadMethod() != null)) {
+						// GenericTypeAwarePropertyDescriptor leniently resolves a set* write method
+						// against a declared read method, so we prefer read method descriptors here.
+						pd = buildGenericTypeAwarePropertyDescriptor(beanClass, pd);
++						if (pd.getPropertyType() != null && (ClassLoader.class.isAssignableFrom(pd.getPropertyType())
++								|| ProtectionDomain.class.isAssignableFrom(pd.getPropertyType()))) {
++							// Ignore ClassLoader and ProtectionDomain types - nobody needs to bind to those
++							continue;
++						}
+						this.propertyDescriptors.put(pd.getName(), pd);
+						Method readMethod = pd.getReadMethod();
+						if (readMethod != null) {
+							readMethodNames.add(readMethod.getName());
+						}
+					}
+				}
+				introspectInterfaces(ifc, ifc, readMethodNames);
+			}
+		}
+	}
+
+	/*** Other class properties not shown ***/
+
+}
