@@ -29,7 +29,7 @@
 			</div>
 			<form:form action="login2" method="post" modelAttribute="login" >
 
-				<div class="input-group">
+				<div style="margin-left: 40;margin-right: 40;">
 				<form:input type="text" id="username" path="username" class="form-control" placeholder="Username"></form:input>
 				<form:input type="password" id="password" path="password" class="form-control" placeholder="Password"></form:input>
 				<input type="submit" id="submit" class="btn btn-primary form-control" value="Login" />
